@@ -1,0 +1,172 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-2: #242424;
+  --border: #2e2e2e;
+  --border-hover: #444;
+  --accent: #7c6dfa;
+  --accent-dim: rgba(124,109,250,0.12);
+  --text: #f0f0f0;
+  --text-muted: #888;
+  --success: #4ade80;
+  --danger: #f87171;
+  --radius: 10px;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+#app { width: 100%; max-width: 600px; }
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.25rem;
+}
+
+p.sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.drop-zone {
+  border: 1.5px dashed var(--border-hover);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.drop-zone:hover, .drop-zone.over {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+.drop-zone svg { color: var(--text-muted); margin-bottom: 0.75rem; }
+.drop-zone p { font-size: 0.875rem; color: var(--text-muted); }
+.drop-zone strong { color: var(--text); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.file-name {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: var(--surface-2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.offset-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.5rem;
+}
+.offset-row label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.offset-row input[type=number] {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 1rem;
+  padding: 7px 12px;
+  width: 120px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.offset-row input[type=number]:focus { border-color: var(--accent); }
+.offset-hint { font-size: 0.8rem; color: var(--text-muted); }
+
+.preview-box {
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+.preview-box .label { color: var(--text-muted); }
+.preview-box .before { color: var(--text-muted); text-decoration: line-through; }
+.preview-box .after { color: var(--accent); }
+
+.actions { display: flex; gap: 10px; margin-top: 1.25rem; flex-wrap: wrap; }
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  border: none;
+}
+button:active { transform: scale(0.97); }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { opacity: 0.88; }
+.btn-ghost { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+.btn-ghost:hover:not(:disabled) { border-color: var(--border-hover); color: var(--text); }
+
+.status {
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  min-height: 18px;
+}
+.status.ok { color: var(--success); }
+.status.err { color: var(--danger); }
